@@ -1,0 +1,46 @@
+@model final.ViewModels.AdminLoginInputModel
+
+@{
+    ViewData["Title"] = "Đăng nhập quản trị";
+}
+
+<section class="admin-login-page">
+    <div class="admin-login-card">
+        <a class="store-brand admin-login-brand" asp-controller="Home" asp-action="Index">
+            <span class="brand-mark">N</span>
+            <span>N1736 Shop<small>ADMINISTRATION</small></span>
+        </a>
+        <span class="section-eyebrow">KHU VỰC QUẢN TRỊ</span>
+        <h1>Chào mừng trở lại</h1>
+        <p class="admin-login-subtitle">Đăng nhập để quản lý đơn hàng của cửa hàng.</p>
+        <form asp-controller="AdminAccount" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <input asp-for="ReturnUrl" type="hidden" />
+            <div asp-validation-summary="All" class="validation-summary"></div>
+            <div class="checkout-field">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" autocomplete="username" />
+                <span asp-validation-for="Username" class="field-error"></span>
+            </div>
+            <div class="checkout-field">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="field-error"></span>
+            </div>
+            <div class="form-check remember-admin">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label">Giữ đăng nhập trên thiết bị này</label>
+            </div>
+            <button type="submit" class="btn order-submit">Đăng nhập</button>
+        </form>
+        <a class="admin-back-store" asp-controller="Home" asp-action="Index">← Quay lại cửa hàng</a>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

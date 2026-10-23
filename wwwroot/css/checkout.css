@@ -1,0 +1,55 @@
+.checkout-page, .confirmation-page { max-width: 1050px; margin: 38px auto 72px; padding: 0 20px; }
+.checkout-back { display: inline-block; margin-bottom: 22px; color: #4759dd; font-size: 13px; }
+.checkout-heading { margin-bottom: 22px; }
+.checkout-heading h1 { margin: 7px 0 5px; font-size: 32px; font-weight: 740; letter-spacing: -.8px; }
+.checkout-heading p, .checkout-subtitle { margin: 0; color: #718097; font-size: 13px; }
+.checkout-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; align-items: start; gap: 18px; }
+.checkout-card { padding: 22px; border: 1px solid #e9edf2; border-radius: 14px; background: #fff; }
+.checkout-card h2 { margin: 0 0 5px; font-size: 18px; font-weight: 700; }
+.checkout-subtitle { font-size: 12px; }
+.checkout-field { display: grid; gap: 6px; margin-top: 17px; }
+.checkout-field label { color: #384860; font-size: 12px; font-weight: 600; }
+.checkout-field .form-control { border-color: #e1e6ed; border-radius: 8px; padding: 10px 11px; font-size: 13px; }
+.checkout-field .form-control::placeholder { color: #a3adba; }
+.field-error, .validation-summary { color: #b33848; font-size: 11px; }
+.validation-summary:empty { display: none; }
+.validation-summary ul { margin: 0 0 12px; padding-left: 17px; }
+.order-submit { display: flex; width: 100%; justify-content: center; margin-top: 19px; border-radius: 8px; padding: 11px; color: #fff; background: #3b5cff; font-size: 13px; font-weight: 650; }
+.order-submit:hover { color: #fff; background: #2d49ed; }
+.order-submit:disabled { background: #919bb0; }
+.admin-change-note { margin: 13px 0 0; color: #718097; font-size: 11px; line-height: 1.6; }
+.order-summary { position: sticky; top: 20px; }
+.checkout-items { display: grid; gap: 12px; padding: 14px 0; }
+.checkout-line { display: flex; justify-content: space-between; gap: 12px; color: #46556d; font-size: 11px; }
+.checkout-line strong { flex: 0 0 auto; color: #263baf; font-size: 11px; }
+.checkout-empty { color: #a63e47; font-size: 11px; }
+.checkout-grand-total, .confirmation-total { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 14px; border-top: 1px solid #e9edf2; font-size: 12px; }
+.checkout-grand-total strong, .confirmation-total strong { color: #263baf; font-size: 17px; }
+.confirmation-page { max-width: 700px; }
+.confirmation-card { padding: 29px; border: 1px solid #e9edf2; border-radius: 16px; background: #fff; box-shadow: 0 12px 35px #1e335009; }
+.confirmation-check { display: grid; width: 46px; height: 46px; margin-bottom: 18px; place-items: center; border-radius: 50%; color: #0b885c; background: #e5f5ed; font-size: 25px; }
+.confirmation-card h1 { margin: 7px 0; font-size: 30px; font-weight: 740; letter-spacing: -.7px; }
+.confirmation-message { color: #718097; font-size: 13px; }
+.confirmation-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; padding: 16px; border-radius: 10px; background: #f7f8fb; }
+.confirmation-contact div { min-width: 0; }
+.confirmation-contact dt { margin-bottom: 3px; color: #718097; font-size: 10px; }
+.confirmation-contact dd { overflow-wrap: anywhere; margin: 0; color: #27364c; font-size: 12px; font-weight: 600; }
+.confirmation-card h2 { margin: 20px 0 10px; font-size: 15px; font-weight: 700; }
+.confirmation-lines { border-bottom: 1px solid #e9edf2; }
+.confirmation-line { display: flex; justify-content: space-between; gap: 10px; padding: 11px 0; color: #46556d; font-size: 12px; }
+.confirmation-line strong { flex: 0 0 auto; font-size: 12px; }
+.confirmation-quantity { color: #718097; }
+.confirmation-total { padding: 14px 0; font-weight: 650; }
+.confirmation-card .admin-change-note { margin-top: 12px; }
+.continue-shopping { margin-top: 16px; padding: 10px 15px; color: white; background: #3b5cff; font-size: 12px; }
+.continue-shopping:hover { color: white; background: #2d49ed; }
+@media (max-width: 760px) {
+  .checkout-page, .confirmation-page { margin-top: 22px; padding: 0 14px; }
+  .checkout-layout { grid-template-columns: 1fr; }
+  .order-summary { position: static; }
+  .confirmation-card { padding: 20px; }
+}
+@media (max-width: 450px) {
+  .confirmation-contact { grid-template-columns: 1fr; }
+  .checkout-card { padding: 17px; }
+}

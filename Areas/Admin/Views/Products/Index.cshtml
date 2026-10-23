@@ -1,0 +1,60 @@
+@model IReadOnlyList<final.Models.Product>
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+}
+
+<section class="admin-page">
+    <div class="admin-page-heading">
+        <div>
+            <span class="section-eyebrow">N1736 SHOP · QUẢN TRỊ</span>
+            <h1>Quản lý sản phẩm</h1>
+            <p>Thêm, cập nhật hoặc gỡ sản phẩm khỏi cửa hàng.</p>
+        </div>
+        <a class="btn admin-save-button" asp-area="Admin" asp-controller="Products" asp-action="Create">+ Thêm sản phẩm</a>
+    </div>
+
+    <section class="admin-orders-card">
+        <div class="admin-orders-toolbar">
+            <div><h2>Danh sách sản phẩm</h2><span>@Model.Count sản phẩm</span></div>
+        </div>
+        <div class="admin-table-scroll">
+            <table class="admin-orders-table admin-products-table">
+                <thead>
+                    <tr><th>ẢNH</th><th>SẢN PHẨM</th><th>DANH MỤC</th><th>GIÁ BÁN</th><th>THAO TÁC</th></tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count == 0)
+                    {
+                        <tr><td colspan="5" class="admin-empty-row">Chưa có sản phẩm.</td></tr>
+                    }
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(product.ImageUrl))
+                                {
+                                    <img class="admin-product-image" src="@product.ImageUrl" alt="@product.Name" />
+                                }
+                                else
+                                {
+                                    <span aria-label="Chưa có ảnh">—</span>
+                                }
+                            </td>
+                            <td><strong>@product.Name</strong><small>@product.Description</small></td>
+                            <td>@product.Category</td>
+                            <td class="admin-price">@product.Price.ToString("N0") ₫</td>
+                            <td class="admin-actions">
+                                <a class="btn admin-action-edit" asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">Sửa</a>
+                                <a class="btn admin-action-delete" asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+}

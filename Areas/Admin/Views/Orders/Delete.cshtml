@@ -1,0 +1,27 @@
+@model final.Models.Order
+@{
+    ViewData["Title"] = "Xác nhận xóa đơn";
+}
+
+<section class="admin-page admin-delete-page">
+    <a class="admin-back-link" asp-area="Admin" asp-controller="Orders" asp-action="Index">← Quay lại danh sách đơn</a>
+    <section class="admin-orders-card delete-confirm-card">
+        <span class="section-eyebrow">XÁC NHẬN THAO TÁC</span>
+        <h1>Xóa đơn DH-@Model.Id.ToString("D6")?</h1>
+        <p>Đơn đã lưu của khách <strong>@Model.CustomerName</strong> sẽ bị xóa cùng các sản phẩm trong đơn. Thao tác này không thể hoàn tác.</p>
+        <dl class="delete-order-summary">
+            <div><dt>Số điện thoại</dt><dd>@Model.Phone</dd></div>
+            <div><dt>Địa chỉ giao hàng</dt><dd>@Model.DeliveryAddress</dd></div>
+            <div><dt>Tổng tiền</dt><dd>@Model.TotalAmount.ToString("N0") ₫</dd></div>
+        </dl>
+        <form asp-area="Admin" asp-controller="Orders" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            @Html.AntiForgeryToken()
+            <button class="btn admin-confirm-delete" type="submit">Xác nhận xóa đơn hàng</button>
+            <a class="btn admin-cancel-button" asp-area="Admin" asp-controller="Orders" asp-action="Index">Giữ lại đơn hàng</a>
+        </form>
+    </section>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+}

@@ -1,0 +1,28 @@
+@model final.Models.Product
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<section class="admin-page admin-delete-page">
+    <a class="admin-back-link" asp-area="Admin" asp-controller="Products" asp-action="Index">← Quay lại danh sách sản phẩm</a>
+    <section class="admin-orders-card delete-confirm-card">
+        <span class="section-eyebrow">N1736 SHOP · QUẢN TRỊ</span>
+        <h1>Xác nhận xóa sản phẩm</h1>
+        <p>Sản phẩm chỉ bị xóa sau khi bạn xác nhận. Sản phẩm đã có trong đơn hàng sẽ được giữ lại để bảo toàn lịch sử.</p>
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <dl class="delete-order-summary">
+            <div><dt>Tên sản phẩm</dt><dd>@Model.Name</dd></div>
+            <div><dt>Danh mục</dt><dd>@Model.Category</dd></div>
+            <div><dt>Giá bán</dt><dd>@Model.Price.ToString("N0") ₫</dd></div>
+        </dl>
+        <form asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn admin-confirm-delete">Xóa sản phẩm</button>
+            <a class="btn admin-cancel-button" asp-area="Admin" asp-controller="Products" asp-action="Index">Hủy</a>
+        </form>
+    </section>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+}

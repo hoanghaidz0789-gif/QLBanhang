@@ -1,0 +1,75 @@
+@model IReadOnlyList<final.Models.Product>
+
+@{
+    ViewData["Title"] = "Cửa hàng công nghệ";
+    var categories = ViewData["Categories"] as IReadOnlyList<string> ?? Array.Empty<string>();
+}
+
+<section class="store-hero">
+    <div>
+        <div class="hero-eyebrow">CỬA HÀNG CÔNG NGHỆ CHÍNH HÃNG</div>
+        <h1>Công nghệ tốt.<br /><span>Giao đến tận nhà.</span></h1>
+        <p>Khám phá thiết bị bạn yêu thích và đặt hàng chỉ trong vài bước.</p>
+        <a class="btn hero-button" href="#products">Khám phá sản phẩm <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit"></div>
+        <span class="hero-phone">📱</span>
+        <span class="hero-laptop">💻</span>
+        <span class="hero-sparkle">✦</span>
+    </div>
+</section>
+
+<section class="shop-content" id="products">
+    <div class="section-heading">
+        <div>
+            <span class="section-eyebrow">ĐƯỢC CHỌN LỌC CHO BẠN</span>
+            <h2>Sản phẩm nổi bật</h2>
+        </div>
+        <label class="category-filter">
+            <span>Lọc theo danh mục</span>
+            <select id="category-filter" aria-label="Lọc sản phẩm theo danh mục">
+                <option value="all">Tất cả sản phẩm</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+        </label>
+    </div>
+
+    <div class="shop-layout">
+        <div class="product-grid" id="product-grid">
+            <partial name="_ProductCards" model="Model" />
+        </div>
+
+        <aside class="cart-panel" aria-label="Giỏ hàng">
+            <div class="cart-heading">
+                <div>
+                    <span class="section-eyebrow">SẴN SÀNG ĐẶT HÀNG?</span>
+                    <h2>Giỏ hàng <span class="cart-count" id="cart-count">0</span></h2>
+                </div>
+                <span class="cart-icon" aria-hidden="true">🛒</span>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <div class="cart-empty">Chọn một vài món công nghệ để bắt đầu.</div>
+            </div>
+            <div class="cart-total">
+                <span>Tổng cộng</span>
+                <strong id="cart-total">0 ₫</strong>
+            </div>
+            <form asp-controller="Orders" asp-action="Checkout" method="post" id="checkout-form">
+                @Html.AntiForgeryToken()
+                <div id="cart-payload"></div>
+                <button type="submit" id="checkout-button" class="btn checkout-button" disabled>
+                    Tiếp tục đặt hàng <span aria-hidden="true">→</span>
+                </button>
+            </form>
+            <p class="cart-note"><span aria-hidden="true">🔒</span> Thông tin của bạn được bảo mật</p>
+        </aside>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/store.js" asp-append-version="true"></script>
+}

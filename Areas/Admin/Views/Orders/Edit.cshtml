@@ -1,0 +1,51 @@
+@model final.ViewModels.EditOrderInputModel
+@{
+    ViewData["Title"] = "Cập nhật đơn hàng";
+    var order = (final.Models.Order)ViewData["Order"]!;
+}
+
+<section class="admin-page admin-edit-page">
+    <a class="admin-back-link" asp-area="Admin" asp-controller="Orders" asp-action="Index">← Quay lại danh sách đơn</a>
+    <div class="admin-page-heading">
+        <div>
+            <span class="section-eyebrow">CẬP NHẬT ĐƠN DH-@order.Id.ToString("D6")</span>
+            <h1>Sửa thông tin đơn hàng</h1>
+            <p>Thông tin sản phẩm và giá bán tại thời điểm đặt sẽ được giữ nguyên.</p>
+        </div>
+    </div>
+
+    <div class="admin-edit-layout">
+        <section class="admin-orders-card admin-form-card">
+            <form asp-area="Admin" asp-controller="Orders" asp-action="Edit" asp-route-id="@order.Id" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="validation-summary"></div>
+                <div class="checkout-field"><label asp-for="CustomerName"></label><input asp-for="CustomerName" class="form-control" /><span asp-validation-for="CustomerName" class="field-error"></span></div>
+                <div class="checkout-field"><label asp-for="Phone"></label><input asp-for="Phone" class="form-control" type="tel" /><span asp-validation-for="Phone" class="field-error"></span></div>
+                <div class="checkout-field"><label asp-for="DeliveryAddress"></label><textarea asp-for="DeliveryAddress" class="form-control" rows="2"></textarea><span asp-validation-for="DeliveryAddress" class="field-error"></span></div>
+                <div class="checkout-field"><label asp-for="Note"></label><textarea asp-for="Note" class="form-control" rows="2"></textarea><span asp-validation-for="Note" class="field-error"></span></div>
+                <div class="checkout-field"><label asp-for="Status"></label><select asp-for="Status" asp-items="Html.GetEnumSelectList<final.Models.OrderStatus>()" class="form-select"></select><span asp-validation-for="Status" class="field-error"></span></div>
+                <div class="admin-edit-actions">
+                    <button type="submit" class="btn admin-save-button">Lưu thay đổi</button>
+                    <a class="btn admin-cancel-button" asp-area="Admin" asp-controller="Orders" asp-action="Index">Hủy</a>
+                </div>
+            </form>
+        </section>
+
+        <aside class="admin-orders-card admin-order-preview">
+            <h2>Sản phẩm đã đặt</h2>
+            @foreach (var item in order.Items)
+            {
+                <div class="admin-preview-item"><span>@item.ProductName × @item.Quantity</span><strong>@((item.UnitPrice * item.Quantity).ToString("N0")) ₫</strong></div>
+            }
+            <div class="admin-preview-total"><span>Tổng đơn hàng</span><strong>@order.TotalAmount.ToString("N0") ₫</strong></div>
+        </aside>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

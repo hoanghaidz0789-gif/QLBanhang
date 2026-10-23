@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cửa hàng thiết bị công nghệ chính hãng. Chọn sản phẩm và đặt giao tận nhà." />
+    <title>@ViewData["Title"] · N1736 Shop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/final.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-sm container site-navbar" aria-label="Điều hướng chính">
+            <a class="navbar-brand store-brand" asp-area="" asp-controller="Home" asp-action="Index">
+               <img src="~/images/products/logo.jpg" alt="N1736 Shop Logo" class="brand-logo" />
+                <span>N1736 Shop<small>TECOLOGY IN UTC </small></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#primary-navigation" aria-controls="primary-navigation"
+                    aria-expanded="false" aria-label="Mở điều hướng">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="primary-navigation">
+                <div class="navbar-nav align-items-sm-center gap-sm-3">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Cửa hàng</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link admin-nav-link" asp-area="Admin" asp-controller="Orders" asp-action="Index">
+                            Quản lý bán hàng
+                        </a>
+                        <a class="nav-link admin-nav-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                            Quản lý sản phẩm
+                        </a>
+                        <form asp-controller="AdminAccount" asp-action="Logout" method="post" class="nav-item">
+                            <button class="nav-link admin-nav-link" type="submit">Đăng xuất</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="nav-link admin-nav-link" asp-controller="AdminAccount" asp-action="Login">
+                            Đăng nhập Admin
+                        </a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="footer-brand" asp-area="" asp-controller="Home" asp-action="Index">N1736 Shop</a>
+            <span>Technology Information</span>
+            <span> @DateTime.Now.Year N1736 By HAG17 </span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

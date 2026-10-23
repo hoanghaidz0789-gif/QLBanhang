@@ -1,0 +1,42 @@
+@model final.Models.Order
+
+@{
+    ViewData["Title"] = "Đặt hàng thành công";
+}
+
+<section class="confirmation-page">
+    <div class="confirmation-card">
+        <div class="confirmation-check" aria-hidden="true">✓</div>
+        <span class="section-eyebrow">ĐÃ GHI NHẬN ĐƠN HÀNG</span>
+        <h1>Cảm ơn @Model.CustomerName!</h1>
+        <p class="confirmation-message">Đơn hàng của bạn đã được lưu. Thông tin xác nhận được hiển thị bên dưới.</p>
+
+        <dl class="confirmation-contact">
+            <div><dt>Số điện thoại</dt><dd>@Model.Phone</dd></div>
+            <div><dt>Địa chỉ nhận hàng</dt><dd>@Model.DeliveryAddress</dd></div>
+            @if (!string.IsNullOrWhiteSpace(Model.Note))
+            {
+                <div><dt>Ghi chú</dt><dd>@Model.Note</dd></div>
+            }
+            <div><dt>Mã đơn hàng</dt><dd>DH-@Model.Id.ToString("D6")</dd></div>
+        </dl>
+
+        <h2>Sản phẩm đã đặt</h2>
+        <div class="confirmation-lines">
+            @foreach (var item in Model.Items)
+            {
+                <div class="confirmation-line">
+                    <span>@item.ProductName <span class="confirmation-quantity">× @item.Quantity</span></span>
+                    <strong>@((item.UnitPrice * item.Quantity).ToString("N0")) ₫</strong>
+                </div>
+            }
+        </div>
+        <div class="confirmation-total"><span>Tổng thanh toán</span><strong>@Model.TotalAmount.ToString("N0") ₫</strong></div>
+        <p class="admin-change-note">Cần thay đổi thông tin đơn? Hãy liên hệ Admin để được hỗ trợ; khách hàng không thể tự sửa đơn đã đặt.</p>
+        <a class="btn continue-shopping" asp-controller="Home" asp-action="Index">Tiếp tục mua sắm</a>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true" />
+}

@@ -1,0 +1,96 @@
+@model IReadOnlyList<final.Models.Order>
+@using final.Models
+
+@{
+    ViewData["Title"] = "Quản lý bán hàng";
+    var currentStatus = ViewData["StatusFilter"] as string;
+}
+
+<section class="admin-page">
+    <header class="admin-page-heading">
+        <div>
+            <span class="section-eyebrow">KHU VỰC QUẢN TRỊ</span>
+            <h1>Quản lý bán hàng</h1>
+            <p>Theo dõi thông tin khách, sản phẩm và trạng thái từng đơn hàng.</p>
+        </div>
+        <form asp-controller="AdminAccount" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn admin-logout">Đăng xuất</button>
+        </form>
+    </header>
+
+    <section class="admin-stats" aria-label="Tổng quan đơn hàng">
+        <article><span>Tổng số đơn</span><strong>@Model.Count</strong></article>
+        <article><span>Chờ xác nhận</span><strong>@Model.Count(order => order.Status == OrderStatus.Pending)</strong></article>
+        <article><span>Doanh thu các đơn đang hiển thị</span><strong>@Model.Sum(order => order.TotalAmount).ToString("N0") ₫</strong></article>
+    </section>
+
+    <section class="admin-orders-card">
+        <div class="admin-orders-toolbar">
+            <div>
+                <h2>Đơn đặt hàng</h2>
+                <span>@Model.Count đơn hàng</span>
+            </div>
+            <form asp-area="Admin" asp-controller="Orders" asp-action="Index" method="get">
+                <label for="status-filter">Lọc trạng thái</label>
+                <select id="status-filter" name="status" class="form-select">
+                    <option value="">Tất cả trạng thái</option>
+                    @foreach (var status in Enum.GetValues<OrderStatus>())
+                    {
+                        if (string.Equals(currentStatus, status.ToString(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            <option value="@status" selected>@status.GetDisplayName()</option>
+                        }
+                        else
+                        {
+                            <option value="@status">@status.GetDisplayName()</option>
+                        }
+                    }
+                </select>
+                <button type="submit" class="btn admin-filter-button">Lọc</button>
+            </form>
+        </div>
+
+        <div class="admin-table-scroll">
+            <table class="admin-orders-table">
+                <thead>
+                    <tr>
+                        <th>MÃ ĐƠN / NGÀY</th>
+                        <th>KHÁCH HÀNG</th>
+                        <th>ĐIỆN THOẠI / ĐỊA CHỈ</th>
+                        <th>SẢN PHẨM</th>
+                        <th>TỔNG TIỀN</th>
+                        <th>TRẠNG THÁI</th>
+                        <th>THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count == 0)
+                    {
+                        <tr><td colspan="7" class="admin-empty-row">Chưa có đơn hàng phù hợp.</td></tr>
+                    }
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td><strong>DH-@order.Id.ToString("D6")</strong><small>@order.CreatedAtUtc.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small></td>
+                            <td>@order.CustomerName</td>
+                            <td>@order.Phone<small class="address-cell">@order.DeliveryAddress</small></td>
+                            <td>@string.Join(", ", order.Items.Select(item => $"{item.ProductName} × {item.Quantity}"))</td>
+                            <td class="admin-price">@order.TotalAmount.ToString("N0") ₫</td>
+                            <td><span class="order-status status-@order.Status.ToString().ToLowerInvariant()">@order.Status.GetDisplayName()</span></td>
+                            <td class="admin-actions">
+                                <a class="btn admin-action-edit" asp-area="Admin" asp-controller="Orders" asp-action="Edit" asp-route-id="@order.Id">Sửa</a>
+                                <a class="btn admin-action-delete" asp-area="Admin" asp-controller="Orders" asp-action="Delete" asp-route-id="@order.Id">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <p class="admin-notice">Chỉ Admin được sửa hoặc xóa đơn. Thông tin sản phẩm và giá tại thời điểm đặt hàng được giữ nguyên.</p>
+    </section>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+}

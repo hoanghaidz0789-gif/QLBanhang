@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Không có quyền truy cập";
+}
+
+<section class="confirmation-page">
+    <div class="confirmation-card">
+        <span class="section-eyebrow">KHU VỰC QUẢN TRỊ</span>
+        <h1>Trang này chỉ dành cho Admin</h1>
+        <p class="confirmation-message">Tài khoản hiện tại không có quyền xem hoặc quản lý đơn hàng.</p>
+        <a class="btn continue-shopping" asp-controller="Home" asp-action="Index">Quay lại cửa hàng</a>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true" />
+}
