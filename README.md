@@ -16,7 +16,7 @@
 
    ```powershell
    dotnet user-secrets set "Admin:Username" "admin"
-   dotnet user-secrets set "Admin:Password" "ThayBangMatKhauManh-Rieng"
+   dotnet user-secrets set "Admin:Password" "Pass_1234"
    ```
 
    Thay mật khẩu mẫu bằng mật khẩu mạnh của riêng bạn. Không lưu mật khẩu vào mã nguồn.
@@ -30,7 +30,7 @@
 
 Admin có thể thêm, sửa, xóa sản phẩm. Ảnh sản phẩm tải trực tiếp tại trang quản trị, chỉ nhận JPG/PNG/WebP tối đa 5 MB. Sản phẩm đã được dùng trong đơn hàng không thể xóa để bảo toàn lịch sử.
 
-Nếu chưa cấu hình `Admin:Username` và `Admin:Password`, ứng dụng vẫn khởi động nhưng không tạo tài khoản quản trị.
+Nếu chưa cấu hình `Admin:Username` và `Admin:Password`, ứng dụng vẫn khởi động nhưng không thể tạo tài khoản quản trị.
 
 ## Kiểm thử
 
