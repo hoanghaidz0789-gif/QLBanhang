@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title description">
+  <title id="title">Sơ đồ cây phân rã chức năng N1736 Shop</title>
+  <desc id="description">Ba nhóm chức năng: khách hàng, quản trị và hệ thống; mỗi nhóm được phân rã thành các chức năng cụ thể.</desc>
+  <defs>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #172554; }
+      .root { fill: #172554; stroke: #172554; }
+      .root-text { fill: #fff; font-size: 30px; font-weight: 700; }
+      .root-sub { fill: #dbeafe; font-size: 18px; }
+      .branch-customer { fill: #e0f2fe; stroke: #0284c7; }
+      .branch-admin { fill: #ede9fe; stroke: #7c3aed; }
+      .branch-system { fill: #dcfce7; stroke: #16a34a; }
+      .branch-text { font-size: 23px; font-weight: 700; }
+      .node { fill: #fff; stroke: #cbd5e1; }
+      .node-text { font-size: 18px; }
+      .subnode { fill: #f8fafc; stroke: #dbe3ee; }
+      .subnode-text { font-size: 16px; fill: #334155; }
+      .connector { fill: none; stroke: #94a3b8; stroke-width: 2.5; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Root -->
+  <rect class="root" x="500" y="28" width="600" height="105" rx="18" stroke-width="2"/>
+  <text class="root-text" x="800" y="72" text-anchor="middle">N1736 SHOP</text>
+  <text class="root-sub" x="800" y="104" text-anchor="middle">Website bán hàng và quản lý cửa hàng thiết bị công nghệ</text>
+
+  <!-- Main tree branches -->
+  <path class="connector" d="M800 133 V175 H265 V212" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 175 V212" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 175 H1335 V212" marker-end="url(#arrow)"/>
+
+  <!-- Customer branch -->
+  <rect class="branch-customer" x="35" y="222" width="460" height="72" rx="14" stroke-width="2"/>
+  <text class="branch-text" x="265" y="267" text-anchor="middle">1. CHỨC NĂNG KHÁCH HÀNG</text>
+  <path class="connector" d="M265 294 V320 H150 V350" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 320 H380 V350" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 294 V440" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 294 V315 H20 V673 H55" marker-end="url(#arrow)"/>
+
+  <rect class="node" x="45" y="350" width="210" height="62" rx="10"/>
+  <text class="node-text" x="150" y="388" text-anchor="middle">Xem sản phẩm</text>
+  <rect class="node" x="275" y="350" width="210" height="62" rx="10"/>
+  <text class="node-text" x="380" y="388" text-anchor="middle">Lọc danh mục</text>
+
+  <rect class="node" x="55" y="440" width="420" height="62" rx="10"/>
+  <text class="node-text" x="265" y="478" text-anchor="middle">Quản lý giỏ hàng</text>
+  <path class="connector" d="M265 502 V522 H115 V542" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 522 H265 V542" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 522 H415 V542" marker-end="url(#arrow)"/>
+  <rect class="subnode" x="45" y="550" width="140" height="54" rx="9"/>
+  <text class="subnode-text" x="115" y="583" text-anchor="middle">Thêm sản phẩm</text>
+  <rect class="subnode" x="195" y="550" width="140" height="54" rx="9"/>
+  <text class="subnode-text" x="265" y="583" text-anchor="middle">Đổi số lượng</text>
+  <rect class="subnode" x="345" y="550" width="140" height="54" rx="9"/>
+  <text class="subnode-text" x="415" y="583" text-anchor="middle">Xóa sản phẩm</text>
+
+  <rect class="node" x="55" y="642" width="420" height="62" rx="10"/>
+  <text class="node-text" x="265" y="680" text-anchor="middle">Đặt hàng và xác nhận</text>
+  <path class="connector" d="M265 704 V722 H115 V742" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 722 H265 V742" marker-end="url(#arrow)"/>
+  <path class="connector" d="M265 722 H415 V742" marker-end="url(#arrow)"/>
+  <rect class="subnode" x="45" y="750" width="140" height="74" rx="9"/>
+  <text class="subnode-text" x="115" y="779" text-anchor="middle">Nhập thông tin</text>
+  <text class="subnode-text" x="115" y="801" text-anchor="middle">nhận hàng</text>
+  <rect class="subnode" x="195" y="750" width="140" height="74" rx="9"/>
+  <text class="subnode-text" x="265" y="779" text-anchor="middle">Kiểm tra và</text>
+  <text class="subnode-text" x="265" y="801" text-anchor="middle">tính tiền</text>
+  <rect class="subnode" x="345" y="750" width="140" height="74" rx="9"/>
+  <text class="subnode-text" x="415" y="779" text-anchor="middle">Xem kết quả</text>
+  <text class="subnode-text" x="415" y="801" text-anchor="middle">đặt hàng</text>
+
+  <!-- Admin branch -->
+  <rect class="branch-admin" x="570" y="222" width="460" height="72" rx="14" stroke-width="2"/>
+  <text class="branch-text" x="800" y="267" text-anchor="middle">2. CHỨC NĂNG QUẢN TRỊ</text>
+  <path class="connector" d="M800 294 V320 H800 V342" marker-end="url(#arrow)"/>
+  <rect class="node" x="590" y="350" width="420" height="62" rx="10"/>
+  <text class="node-text" x="800" y="388" text-anchor="middle">Đăng nhập / đăng xuất Admin</text>
+
+  <path class="connector" d="M800 412 V432"/>
+  <rect class="node" x="590" y="440" width="420" height="62" rx="10"/>
+  <text class="node-text" x="800" y="478" text-anchor="middle">Quản lý sản phẩm</text>
+  <path class="connector" d="M800 502 V522 H650 V542" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 522 H800 V542" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 522 H950 V542" marker-end="url(#arrow)"/>
+  <rect class="subnode" x="580" y="550" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="650" y="579" text-anchor="middle">Xem, thêm,</text>
+  <text class="subnode-text" x="650" y="601" text-anchor="middle">sửa sản phẩm</text>
+  <rect class="subnode" x="730" y="550" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="800" y="579" text-anchor="middle">Tải / thay</text>
+  <text class="subnode-text" x="800" y="601" text-anchor="middle">ảnh sản phẩm</text>
+  <rect class="subnode" x="880" y="550" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="950" y="579" text-anchor="middle">Xóa có kiểm</text>
+  <text class="subnode-text" x="950" y="601" text-anchor="middle">tra lịch sử đơn</text>
+
+  <path class="connector" d="M800 618 V642"/>
+  <rect class="node" x="590" y="650" width="420" height="62" rx="10"/>
+  <text class="node-text" x="800" y="688" text-anchor="middle">Quản lý đơn hàng</text>
+  <path class="connector" d="M800 712 V732 H650 V752" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 732 H800 V752" marker-end="url(#arrow)"/>
+  <path class="connector" d="M800 732 H950 V752" marker-end="url(#arrow)"/>
+  <rect class="subnode" x="580" y="760" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="650" y="789" text-anchor="middle">Xem / lọc</text>
+  <text class="subnode-text" x="650" y="811" text-anchor="middle">đơn hàng</text>
+  <rect class="subnode" x="730" y="760" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="800" y="789" text-anchor="middle">Sửa thông tin</text>
+  <text class="subnode-text" x="800" y="811" text-anchor="middle">và trạng thái</text>
+  <rect class="subnode" x="880" y="760" width="140" height="68" rx="9"/>
+  <text class="subnode-text" x="950" y="789" text-anchor="middle">Xóa đơn</text>
+  <text class="subnode-text" x="950" y="811" text-anchor="middle">hàng</text>
+
+  <!-- System branch -->
+  <rect class="branch-system" x="1105" y="222" width="460" height="72" rx="14" stroke-width="2"/>
+  <text class="branch-text" x="1335" y="267" text-anchor="middle">3. CHỨC NĂNG HỆ THỐNG</text>
+  <path class="connector" d="M1335 294 V320 H1085 V381 H1125" marker-end="url(#arrow)"/>
+  <path class="connector" d="M1085 381 V781"/>
+  <path class="connector" d="M1085 481 H1125" marker-end="url(#arrow)"/>
+  <path class="connector" d="M1085 581 H1125" marker-end="url(#arrow)"/>
+  <path class="connector" d="M1085 681 H1125" marker-end="url(#arrow)"/>
+  <path class="connector" d="M1085 781 H1125" marker-end="url(#arrow)"/>
+  <rect class="node" x="1125" y="350" width="420" height="62" rx="10"/>
+  <text class="node-text" x="1335" y="388" text-anchor="middle">Phân quyền truy cập Admin</text>
+  <rect class="node" x="1125" y="450" width="420" height="62" rx="10"/>
+  <text class="node-text" x="1335" y="488" text-anchor="middle">Lưu dữ liệu bằng SQL Server</text>
+  <rect class="node" x="1125" y="550" width="420" height="62" rx="10"/>
+  <text class="node-text" x="1335" y="588" text-anchor="middle">Kiểm tra dữ liệu đầu vào</text>
+  <rect class="node" x="1125" y="650" width="420" height="62" rx="10"/>
+  <text class="node-text" x="1335" y="688" text-anchor="middle">Bảo toàn giá / tên tại thời điểm mua</text>
+  <rect class="node" x="1125" y="750" width="420" height="62" rx="10"/>
+  <text class="node-text" x="1335" y="788" text-anchor="middle">Lưu giỏ hàng trên trình duyệt</text>
+
+  <text x="800" y="900" text-anchor="middle" font-size="15" fill="#64748b">Sơ đồ mô tả các chức năng hiện có trong phiên bản N1736 Shop</text>
+</svg>
