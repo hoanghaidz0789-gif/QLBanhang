@@ -25,6 +25,31 @@ public sealed class CatalogTests
     }
 
     [Fact]
+    public async Task HomePageDoesNotRenderHeroBanner()
+    {
+        await using var factory = new TestWebApplicationFactory();
+        using var client = factory.CreateClient();
+
+        var html = await client.GetStringAsync("/");
+
+        Assert.DoesNotContain("store-hero", html, StringComparison.Ordinal);
+        Assert.DoesNotContain("CỬA HÀNG CÔNG NGHỆ CHÍNH HÃNG", html, StringComparison.Ordinal);
+        Assert.Contains("<body class=\"storefront-page\">", html, StringComparison.Ordinal);
+        Assert.Contains("id=\"products\"", html, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task OtherPagesDoNotUseStorefrontBackground()
+    {
+        await using var factory = new TestWebApplicationFactory();
+        using var client = factory.CreateClient();
+
+        var html = await client.GetStringAsync("/Home/Privacy");
+
+        Assert.DoesNotContain("storefront-page", html, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task CatalogRendersUploadedProductImage()
     {
         await using var factory = new TestWebApplicationFactory();

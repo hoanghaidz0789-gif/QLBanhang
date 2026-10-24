@@ -2,23 +2,9 @@
 
 @{
     ViewData["Title"] = "Cửa hàng công nghệ";
+    ViewData["BodyClass"] = "storefront-page";
     var categories = ViewData["Categories"] as IReadOnlyList<string> ?? Array.Empty<string>();
 }
-
-<section class="store-hero">
-    <div>
-        <div class="hero-eyebrow">CỬA HÀNG CÔNG NGHỆ CHÍNH HÃNG</div>
-        <h1>Công nghệ tốt.<br /><span>Giao đến tận nhà.</span></h1>
-        <p>Khám phá thiết bị bạn yêu thích và đặt hàng chỉ trong vài bước.</p>
-        <a class="btn hero-button" href="#products">Khám phá sản phẩm <span aria-hidden="true">↓</span></a>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-        <div class="hero-orbit"></div>
-        <span class="hero-phone">📱</span>
-        <span class="hero-laptop">💻</span>
-        <span class="hero-sparkle">✦</span>
-    </div>
-</section>
 
 <section class="shop-content" id="products">
     <div class="section-heading">
