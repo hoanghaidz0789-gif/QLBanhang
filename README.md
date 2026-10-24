@@ -30,6 +30,8 @@
 
 Admin có thể thêm, sửa, xóa sản phẩm. Ảnh sản phẩm tải trực tiếp tại trang quản trị, chỉ nhận JPG/PNG/WebP tối đa 5 MB. Sản phẩm đã được dùng trong đơn hàng không thể xóa để bảo toàn lịch sử.
 
+Để đặt ảnh nền cho trang cửa hàng, sao chép ảnh vào `wwwroot\images\background\store-background.jpg` (tạo các thư mục nếu chưa có). Nếu chưa có ảnh ở đường dẫn này, trang dùng nền màu sáng mặc định.
+
 Nếu chưa cấu hình `Admin:Username` và `Admin:Password`, ứng dụng vẫn khởi động nhưng không thể tạo tài khoản quản trị.
 
 ## Kiểm thử

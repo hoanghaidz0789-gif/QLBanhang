@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/final.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body>
+<body class="@(ViewData["BodyClass"])">
     <header class="site-header">
         <nav class="navbar navbar-expand-sm container site-navbar" aria-label="Điều hướng chính">
             <a class="navbar-brand store-brand" asp-area="" asp-controller="Home" asp-action="Index">
