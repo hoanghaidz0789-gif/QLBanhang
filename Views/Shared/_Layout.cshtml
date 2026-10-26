@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="~/final.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="@(ViewData["BodyClass"])">
+
+<body class="@ViewData["bodyClass"]">
     <header class="site-header">
         <nav class="navbar navbar-expand-sm container site-navbar" aria-label="Điều hướng chính">
             <a class="navbar-brand store-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -52,17 +53,9 @@
         @RenderBody()
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <a class="footer-brand" asp-area="" asp-controller="Home" asp-action="Index">N1736 Shop</a>
-            <span>Technology Information</span>
-            <span> @DateTime.Now.Year N1736 By HAG17 </span>
-        </div>
-    </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+</body >
 </html>

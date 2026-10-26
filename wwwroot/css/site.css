@@ -7,7 +7,14 @@
   --surface: #ffffff;
   --page: #fbfcfe;
 }
-
+body.storefront-page {
+    background-color: var(--page);
+    background-image: url("/images/background/store-background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 * { box-sizing: border-box; }
 
 html { min-width: 320px; scroll-behavior: smooth; }

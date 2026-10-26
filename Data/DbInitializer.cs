@@ -30,10 +30,32 @@ public static class DbInitializer
         if (!await db.Products.AnyAsync(cancellationToken))
         {
             db.Products.AddRange(
+
                 new Product { Name = "iPhone 16 · 128GB", Category = "Điện thoại", Description = "Điện thoại Apple, bộ nhớ 128GB.", Price = 22_990_000m },
                 new Product { Name = "MacBook Air · M3", Category = "Laptop", Description = "Laptop Apple mỏng nhẹ, chip M3.", Price = 27_490_000m },
                 new Product { Name = "Samsung Galaxy S25", Category = "Điện thoại", Description = "Điện thoại Samsung dòng Galaxy S.", Price = 19_990_000m },
                 new Product { Name = "Sony WH-1000XM5", Category = "Phụ kiện", Description = "Tai nghe chống ồn không dây.", Price = 7_490_000m });
+            await db.SaveChangesAsync(cancellationToken);
+        }
+        const string productsname = "Banphim";
+        if (!await db.Products.AnyAsync(p => p.Name == productsname, cancellationToken))
+        {
+            db.Products.Add(new Product
+            {
+                Name = productsname,
+                Category = "Phụ kiện",
+                Description = "Bàn phím cơ không dây.",
+                Price = 1_490_000m ,
+                ImageUrl = "/images/products/pim.webp"
+            });
+            await db.SaveChangesAsync(cancellationToken);
+        }
+
+        var keyboard = await db.Products.FirstOrDefaultAsync(
+            product => product.Name == productsname, cancellationToken);
+        if (keyboard is { ImageUrl: null })
+        {
+            keyboard.ImageUrl = "/images/products/pim.webp";
             await db.SaveChangesAsync(cancellationToken);
         }
 

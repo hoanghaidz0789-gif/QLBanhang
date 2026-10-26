@@ -1,9 +1,11 @@
 @model IReadOnlyList<final.Models.Product>
 
 @{
-    ViewData["Title"] = "Cửa hàng công nghệ";
+
     ViewData["BodyClass"] = "storefront-page";
     var categories = ViewData["Categories"] as IReadOnlyList<string> ?? Array.Empty<string>();
+}
+
 }
 
 <section class="shop-content" id="products">
